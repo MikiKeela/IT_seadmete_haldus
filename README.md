@@ -1,0 +1,1 @@
+# IT_seadmete_haldus
