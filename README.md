@@ -13,7 +13,7 @@ Projektis on lisaväljana kasutatud `location` (seadme asukoht).
 - in_use
 - broken
 
-## Projekti struktuur
+### Projekti struktuur
 - models – Device klass
 - services – DeviceManager äriloogika
 - storage – CSV ja JSON salvestus
@@ -23,5 +23,7 @@ Projektis on lisaväljana kasutatud `location` (seadme asukoht).
 ## Käivitamine
 Käivita fail `main.py`.
 
-## Autor
+## Märkus töökorralduse kohta
+Töö oli ette nähtud paaristööna, kuid autor teostas projekti iseseisvalt, kuna paarilist ei olnud.
+### Autor
 Michaela Aasala
