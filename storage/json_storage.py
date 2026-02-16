@@ -3,10 +3,21 @@ from models.device import Device
 
 
 class JsonStorage:
+    """
+    JSON salvestamise ja laadimise klass.
+    Vastutab seadmete andmete kirjutamise ja lugemise eest JSON failist.
+    """
 
     @staticmethod
     def save(file_path: str, devices: list[Device]) -> None:
-       data = []
+        """
+        Salvestab seadmete loendi JSON faili.
+
+        :param file_path: Failitee, kuhu andmed salvestatakse
+        :param devices: Seadmete list
+        """
+        data = []
+
         for device in devices:
             data.append({
                 "name": device.name,
@@ -20,10 +31,17 @@ class JsonStorage:
 
     @staticmethod
     def load(file_path: str) -> list[Device]:
+        """
+        Laeb seadmed JSON failist ja tagastab need loendina.
+
+        :param file_path: Failitee, kust andmed loetakse
+        :return: Seadmete list
+        """
         with open(file_path, mode="r", encoding="utf-8") as file:
             data = json.load(file)
 
         devices: list[Device] = []
+
         for item in data:
             devices.append(Device(
                 name=item["name"],

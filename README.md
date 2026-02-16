@@ -23,6 +23,10 @@ Projektis on lisaväljana kasutatud `location` (seadme asukoht).
 ## Käivitamine
 Käivita fail `main.py`.
 
+## Salvestus ja laadimine
+Vali menüüst 5 salvestamiseks ning sisesta `csv` või `json`.
+Vali menüüst 6 laadimiseks ning sisesta `csv` või `json`.
+
 ## Märkus töökorralduse kohta
 Töö oli ette nähtud paaristööna, kuid autor teostas projekti iseseisvalt, kuna paarilist ei olnud.
 ### Autor
