@@ -1,14 +1,1 @@
-[
-  {
-    "name": "Dell Latitude",
-    "device_type": "laptop",
-    "status": "available",
-    "location": "Classroom 2"
-  },
-  {
-    "name": "HP LaserJet",
-    "device_type": "printer",
-    "status": "broken",
-    "location": "Office"
-  }
-]
+[]
