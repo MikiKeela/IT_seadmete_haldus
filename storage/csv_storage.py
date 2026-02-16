@@ -3,23 +3,10 @@ from models.device import Device
 
 
 class CsvStorage:
-    """
-    CSV (Comma-Separated Values) salvestus- ja laadimisklass seadmete jaoks.
-
-    Nõue: Eesti CSV - eraldaja on semikoolon (;), olemas on päiserida,
-    ning kõik seadme väljad salvestatakse.
-    """
-
     FIELDNAMES = ["name", "device_type", "status", "location"]
 
     @staticmethod
     def save(file_path: str, devices: list[Device]) -> None:
-        """
-        Salvestab seadmete loendi CSV faili.
-
-        :param file_path: Failitee, kuhu salvestatakse
-        :param devices: Seadmete list
-        """
         with open(file_path, mode="w", newline="", encoding="utf-8") as file:
             writer = csv.DictWriter(file, fieldnames=CsvStorage.FIELDNAMES, delimiter=";")
             writer.writeheader()
@@ -34,12 +21,6 @@ class CsvStorage:
 
     @staticmethod
     def load(file_path: str) -> list[Device]:
-        """
-        Laadib seadmed CSV failist.
-
-        :param file_path: Failitee, kust laaditakse
-        :return: Seadmete list
-        """
         devices: list[Device] = []
 
         with open(file_path, mode="r", newline="", encoding="utf-8") as file:

@@ -3,9 +3,6 @@ from services.device_manager import DeviceManager
 
 
 def run() -> None:
-    """
-    Käivitab käsurea menüü ja haldab kasutaja tegevusi.
-    """
     manager = DeviceManager()
 
     while True:
@@ -32,9 +29,6 @@ def run() -> None:
 
 
 def _print_menu() -> None:
-    """
-    Kuvab kasutajale põhimenüü valikud.
-    """
     print("\n=== IT seadmete haldus ===")
     print("1) Lisa seade")
     print("2) Kuva seadmed")
@@ -46,13 +40,7 @@ def _print_menu() -> None:
 
 
 def _ask_non_empty(prompt_text: str) -> str:
-    """
-    Küsib kasutajalt sisendi ja tagastab selle, kui see ei ole tühi.
-
-    :param prompt_text: Küsimuse tekst
-    :return: Kasutaja sisend
-    """
-    while True:
+   while True:
         value = input(prompt_text).strip()
         if value:
             return value
@@ -60,12 +48,6 @@ def _ask_non_empty(prompt_text: str) -> str:
 
 
 def _ask_int(prompt_text: str) -> int:
-    """
-    Küsib kasutajalt täisarvu.
-
-    :param prompt_text: Küsimuse tekst
-    :return: Täisarv
-    """
     while True:
         raw = input(prompt_text).strip()
         try:
@@ -75,11 +57,6 @@ def _ask_int(prompt_text: str) -> int:
 
 
 def _ask_status() -> str:
-    """
-    Küsib kasutajalt seadme staatuse ja kontrollib, et see oleks lubatud.
-
-    :return: Staatus (available, in_use, broken)
-    """
     while True:
         status = input("Sisesta staatus (available / in_use / broken): ").strip()
         if status in Device.ALLOWED_STATUSES:
@@ -88,11 +65,6 @@ def _ask_status() -> str:
 
 
 def _ask_format() -> str:
-    """
-    Küsib kasutajalt salvestus-/laadimisformaadi valiku.
-
-    :return: 'csv' või 'json'
-    """
     while True:
         fmt = input("Vali formaat (csv/json): ").strip().lower()
         if fmt in ["csv", "json"]:
@@ -101,11 +73,6 @@ def _ask_format() -> str:
 
 
 def _list_devices(manager: DeviceManager) -> None:
-    """
-    Kuvab kõik seadmed nummerdatult.
-
-    :param manager: DeviceManager objekt
-    """
     devices = manager.list_devices()
     if not devices:
         print("Seadmete loend on tühi.")
@@ -117,11 +84,6 @@ def _list_devices(manager: DeviceManager) -> None:
 
 
 def _add_device_flow(manager: DeviceManager) -> None:
-    """
-    Käsitleb seadme lisamise töövoogu.
-
-    :param manager: DeviceManager objekt
-    """
     name = _ask_non_empty("Sisesta seadme nimi: ")
     device_type = _ask_non_empty("Sisesta seadme tüüp: ")
     status = _ask_status()
@@ -135,11 +97,6 @@ def _add_device_flow(manager: DeviceManager) -> None:
 
 
 def _update_status_flow(manager: DeviceManager) -> None:
-    """
-    Käsitleb seadme seisundi muutmise töövoogu.
-
-    :param manager: DeviceManager objekt
-    """
     _list_devices(manager)
     if not manager.list_devices():
         return
@@ -156,12 +113,7 @@ def _update_status_flow(manager: DeviceManager) -> None:
 
 
 def _delete_device_flow(manager: DeviceManager) -> None:
-    """
-    Käsitleb seadme kustutamise töövoogu.
-
-    :param manager: DeviceManager objekt
-    """
-    _list_devices(manager)
+   _list_devices(manager)
     if not manager.list_devices():
         return
 
@@ -176,11 +128,6 @@ def _delete_device_flow(manager: DeviceManager) -> None:
 
 
 def _save_flow(manager: DeviceManager) -> None:
-    """
-    Käsitleb salvestamise töövoogu (CSV või JSON).
-
-    :param manager: DeviceManager objekt
-    """
     fmt = _ask_format()
     if fmt == "csv":
         manager.save_to_csv("data/devices.csv")
@@ -191,11 +138,6 @@ def _save_flow(manager: DeviceManager) -> None:
 
 
 def _load_flow(manager: DeviceManager) -> None:
-    """
-    Käsitleb laadimise töövoogu (CSV või JSON).
-
-    :param manager: DeviceManager objekt
-    """
     fmt = _ask_format()
     try:
         if fmt == "csv":
